@@ -1,10 +1,14 @@
 import Head from "next/head";
 import { Inter } from "@next/font/google";
 import { AiOutlinePlus } from "react-icons/ai";
+import { useState } from "react";
+import Todo from "../components/Todo";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
+  const [todos, setTodos] = useState(["Learn React", "Grind Leetcode"]);
+
   return (
     <div>
       <Head>
@@ -15,14 +19,26 @@ export default function Home() {
       </Head>
       <div className="h-screen w-screen p-4 bg-gradient-to-r from-[#7A918D] to [#99C2A2]">
         {/* container */}
-        <div>
-          <h3>To Do App</h3>
-          <form>
-            <input type="text" placeholder="Add To Do"></input>
-            <button>
+        <div className="bg-slate-100 max-w-[500px] w-full m-auto rounded-md shadow-xl p-4">
+          <h3 className="text-3xl font-semibold text-center text-gray-600 p-2">
+            Todo App
+          </h3>
+          <form className="flex justify-between">
+            <input
+              className="border p-2 w-full text-xl"
+              type="text"
+              placeholder="Add To Do"
+            ></input>
+            <button className="border p-4 ml-2 bg-lime-100">
               <AiOutlinePlus size={30} />
             </button>
           </form>
+          <ul>
+            {todos.map((todo, index) => (
+              <Todo key={index} todo={todo} />
+            ))}
+          </ul>
+          <p className="text-center p-3">You have 2 todos</p>
         </div>
       </div>
     </div>
