@@ -65,6 +65,14 @@ export default function Home() {
     });
   };
 
+  //update todo text
+
+  const updateTodoText = async (todo: TodoType, newText: string) => {
+    await updateDoc(doc(db, "todos", todo.id), {
+      text: newText,
+    });
+  };
+
   // delete todo
 
   const deleteTodo = async (id: string) => {
@@ -79,21 +87,20 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/headicon.jpg" />
       </Head>
-      <div className="h-screen w-screen p-4 bg-gradient-to-r from-[#b392ac] to [#735d78]">
-        {/* container */}
-        <div className="bg-slate-100 max-w-[500px] w-full m-auto rounded-md shadow-xl p-4">
-          <h3 className="text-3xl font-semibold text-center text-gray-600 p-2">
-            Todo App
+      <div className="h-screen w-screen p-4 bg-gradient-to-r from-[#735d78] to-[#b392ac] ">
+        <div className="bg-slate-50 max-w-[500px] w-full m-auto rounded-2xl shadow-2xl p-4 ">
+          <h3 className="text-3xl font-semibold text-center text-gray-600 p-2 m-5">
+            Task List
           </h3>
           <form onSubmit={createTodo} className="flex justify-between">
             <input
-              className="border p-2 w-full text-xl"
+              className="border p-2 w-full text-xl rounded-2xl"
               type="text"
               placeholder="Add To Do"
               value={value}
               onChange={(event) => setValue(event.target.value)}
             ></input>
-            <button className="border p-4 ml-2 bg-purple-200">
+            <button className="border p-4 ml-2 bg-purple-200 rounded-2xl">
               <AiOutlinePlus size={30} />
             </button>
           </form>
@@ -104,6 +111,7 @@ export default function Home() {
                 todo={todo}
                 toggleComplete={toggleComplete}
                 deleteTodo={deleteTodo}
+                updateTodoText={updateTodoText}
               />
             ))}
           </ul>
