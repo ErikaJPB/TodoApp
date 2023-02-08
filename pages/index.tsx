@@ -37,12 +37,6 @@ export default function Home() {
       text: value,
       completed: false,
     });
-    // .then(() => {
-    //   setTodos((todos) => [
-    //     ...todos,
-    //     { task: value, id: "", completed: false },
-    //   ]);
-    // });
     setValue("");
   };
 
