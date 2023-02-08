@@ -68,22 +68,23 @@ function Todo({ todo, toggleComplete, deleteTodo, updateTodoText }: Props) {
           </>
         )}
       </div>
-      <div className="flex justify-end p-1 ">
+
+      <div className="flex flex-col justify-end ">
         <button
-          className="flex align-items-center cursor-pointer mr-4 my-4  "
+          className="cursor-pointer flex align-items-center my-2 "
           onClick={() => setIsEditing(true)}
         >
-          {<FiEdit />}
+          <FiEdit />
         </button>
         <button
-          className="flex align-items-center cursor-pointer my-4"
+          className="cursor-pointer flex align-items-center my-2 "
           onClick={() => deleteTodo(todo.id)}
         >
-          {<FaRegTrashAlt />}
+          <FaRegTrashAlt />
         </button>
         {isEditing && (
           <button
-            className="flex align-items-center cursor-pointer ml-3 my-3"
+            className="cursor-pointer flex align-items-center my-2 "
             onClick={handleSaveTodoText}
           >
             Edit

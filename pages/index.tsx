@@ -97,8 +97,8 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/headicon.jpg" />
       </Head>
-      <div className="h-screen w-screen p-4 bg-gradient-to-r from-[#735d78] to-[#b392ac] ">
-        <div className="bg-slate-50 max-w-[500px] w-full m-auto rounded-2xl shadow-2xl p-4 my-4 ">
+      <div className="h-screen w-screen p-2 bg-gradient-to-r from-[#735d78] to-[#b392ac] ">
+        <div className="bg-slate-50 max-w-[500px] w-full m-auto rounded-2xl shadow-2xl p-6 my-8  ">
           <h3 className="text-3xl font-semibold text-center text-gray-600 p-2 m-5">
             Task List
           </h3>
@@ -114,17 +114,19 @@ export default function Home() {
               <AiOutlinePlus size={30} />
             </button>
           </form>
-          <ul>
-            {todos?.map((todo) => (
-              <Todo
-                key={todo.id}
-                todo={todo}
-                toggleComplete={toggleComplete}
-                deleteTodo={deleteTodo}
-                updateTodoText={updateTodoText}
-              />
-            ))}
-          </ul>
+          <div className="h-64 overflow-auto">
+            <ul className="list-none">
+              {todos?.map((todo) => (
+                <Todo
+                  key={todo.id}
+                  todo={todo}
+                  toggleComplete={toggleComplete}
+                  deleteTodo={deleteTodo}
+                  updateTodoText={updateTodoText}
+                />
+              ))}
+            </ul>
+          </div>
           {todos.length < 1 ? null : (
             <p className="text-center p-3">{`You have ${todos.length} todos`}</p>
           )}
