@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { FaRegTrashAlt } from "react-icons/fa";
 import { FiEdit } from "react-icons/fi";
+import { TiTickOutline } from "react-icons/ti";
 
 interface Props {
   todo: {
@@ -69,25 +70,25 @@ function Todo({ todo, toggleComplete, deleteTodo, updateTodoText }: Props) {
         )}
       </div>
 
-      <div className="flex flex-col justify-end ">
+      <div className="flex flex-col justify-end  ">
         <button
-          className="cursor-pointer flex align-items-center my-2 "
+          className="cursor-pointer flex align-items-center my-2"
           onClick={() => setIsEditing(true)}
         >
           <FiEdit />
         </button>
         <button
-          className="cursor-pointer flex align-items-center my-2 "
+          className="cursor-pointer flex align-items-center my-2"
           onClick={() => deleteTodo(todo.id)}
         >
           <FaRegTrashAlt />
         </button>
         {isEditing && (
           <button
-            className="cursor-pointer flex align-items-center my-2 "
+            className="cursor-pointer flex align-items-center my-2"
             onClick={handleSaveTodoText}
           >
-            Edit
+            <TiTickOutline />
           </button>
         )}
       </div>
