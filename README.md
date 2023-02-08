@@ -37,7 +37,7 @@ NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID = "your_measurement_id"
 
 ## Author
 
-[ErikaJPB]
+ErikaJPB
 
 ## Acknowledgments
 
