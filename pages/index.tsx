@@ -37,6 +37,12 @@ export default function Home() {
       text: value,
       completed: false,
     });
+    // .then(() => {
+    //   setTodos((todos) => [
+    //     ...todos,
+    //     { task: value, id: "", completed: false },
+    //   ]);
+    // });
     setValue("");
   };
 
@@ -70,6 +76,15 @@ export default function Home() {
   const updateTodoText = async (todo: TodoType, newText: string) => {
     await updateDoc(doc(db, "todos", todo.id), {
       text: newText,
+    }).then(() => {
+      setTodos((prevTodos) =>
+        prevTodos.map((t) => {
+          if (t.id === todo.id) {
+            return { ...t, task: newText };
+          }
+          return t;
+        })
+      );
     });
   };
 
@@ -77,6 +92,7 @@ export default function Home() {
 
   const deleteTodo = async (id: string) => {
     await deleteDoc(doc(db, "todos", id));
+    setTodos((prevTodos) => prevTodos.filter((todo) => todo.id !== id));
   };
 
   return (
@@ -88,7 +104,7 @@ export default function Home() {
         <link rel="icon" href="/headicon.jpg" />
       </Head>
       <div className="h-screen w-screen p-4 bg-gradient-to-r from-[#735d78] to-[#b392ac] ">
-        <div className="bg-slate-50 max-w-[500px] w-full m-auto rounded-2xl shadow-2xl p-4 ">
+        <div className="bg-slate-50 max-w-[500px] w-full m-auto rounded-2xl shadow-2xl p-4 my-4 ">
           <h3 className="text-3xl font-semibold text-center text-gray-600 p-2 m-5">
             Task List
           </h3>
@@ -105,9 +121,9 @@ export default function Home() {
             </button>
           </form>
           <ul>
-            {todos?.map((todo, index) => (
+            {todos?.map((todo) => (
               <Todo
-                key={index}
+                key={todo.id}
                 todo={todo}
                 toggleComplete={toggleComplete}
                 deleteTodo={deleteTodo}

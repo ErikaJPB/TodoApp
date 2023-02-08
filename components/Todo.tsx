@@ -43,7 +43,7 @@ function Todo({ todo, toggleComplete, deleteTodo, updateTodoText }: Props) {
       <div className="flex text-2xl my-4 ">
         {isEditing ? (
           <input
-            className="flex justify-between bg-slate-250 p-1 my-2 capitalize rounded-2xl"
+            className="flex justify-between bg-slate-250 p-1 my-2 rounded-2xl"
             value={todoText}
             onChange={handleUpdateTodoText}
             type="text"
