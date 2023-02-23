@@ -16,7 +16,7 @@ These instructions will help you run the app on your local machine for developme
 1. Clone the repository: `git clone https://github.com/[your_username]/todo-app.git`
 2. Install the dependencies: `npm install` (or `yarn`)
 3. Create a .env file in the root of the project and add your Firebase API key: 
-
+```
      NEXT_PUBLIC_FIREBASE_API_KEY = [your_api_key]
      
      NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN = [your_auth_domain]
@@ -30,6 +30,9 @@ These instructions will help you run the app on your local machine for developme
      NEXT_PUBLIC_FIREBASE_APP_ID = [your_app_id]
      
      NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID = [your_measurement_id]
+ ```
+     
+ 
                                                  
 
 4. Start the development server: `npm run dev` (or `yarn dev`)
